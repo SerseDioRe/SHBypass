@@ -4,6 +4,8 @@
 #include "classes.h"
 #include "config.h"
 
+// porco dio
+
 DWORD WINAPI HackThread(HMODULE hModule)
 {
     void* hookSt = patternscanning::FindPattern(config::modules[Modules::adhesiveDll], config::patterns[Patterns::patternStHook], config::masks[Masks::maskStHook]);

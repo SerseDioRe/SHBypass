@@ -8,10 +8,12 @@ DWORD WINAPI HackThread(HMODULE hModule)
 {
     void* hookSt = patternscanning::FindPattern(config::modules[Modules::adhesiveDll], config::patterns[Patterns::patternStHook], config::masks[Masks::maskStHook]);
     void* hookNd = patternscanning::FindPattern(config::modules[Modules::adhesiveDll], config::patterns[Patterns::patternNdHook], config::masks[Masks::maskNdHook]);
+    void* hookRd = patternscanning::FindPattern(config::modules[Modules::adhesiveDll], config::patterns[Patterns::patternRdHook], config::masks[Masks::maskRdHook]);
     uintptr_t shallow = patternscanning::ScanPattern(config::process, config::modules[Modules::gtaCoreFiveDll], config::combo) + config::jmp;
 
     memory::nop((BYTE*)hookSt, 4);
-    memory::nop((BYTE*)hookNd, 6);
+    memory::nop((BYTE*)hookNd, 4);
+    memory::nop((BYTE*)hookRd, 3);
 
     while (true)
     {

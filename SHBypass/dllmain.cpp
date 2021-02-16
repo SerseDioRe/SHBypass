@@ -13,14 +13,13 @@ DWORD WINAPI HackThread(HMODULE hModule)
 
     memory::nop((BYTE*)hookSt, 4);
     memory::nop((BYTE*)hookNd, 4);
-    memory::nop((BYTE*)hookRd, 3);
+    memory::nop((BYTE*)hookRd, 6);
 
     while (true)
     {
         GtaCoreFiveDll* gtaCoreFiveDll = (GtaCoreFiveDll*)(shallow);
         gtaCoreFiveDll->value = true;
     }
-
 
     return 0;
 }

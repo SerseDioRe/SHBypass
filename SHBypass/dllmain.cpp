@@ -4,7 +4,7 @@
 #include "classes.h"
 #include "config.h"
 
-DWORD WINAPI HackThread(HMODULE hModule)
+DWORD WINAPI SerseDioRe(HMODULE hModule)
 {
     void* hookSt = patternscanning::FindPattern(config::modules[Modules::adhesiveDll], config::patterns[Patterns::patternStHook], config::masks[Masks::maskStHook]);
     void* hookNd = patternscanning::FindPattern(config::modules[Modules::adhesiveDll], config::patterns[Patterns::patternNdHook], config::masks[Masks::maskNdHook]);
@@ -32,7 +32,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)HackThread, hModule, 0, nullptr));
+        CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)SerseDioRe, hModule, 0, nullptr));
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:

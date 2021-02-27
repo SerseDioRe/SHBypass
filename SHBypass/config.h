@@ -37,4 +37,6 @@ namespace config
 	char* combo               =   "d8 2a";
 
 	inline constexpr int jmp  =   0x28DB8;
+
+	uintptr_t adhesiveOffset  =   0x1DFEAB8;
 }

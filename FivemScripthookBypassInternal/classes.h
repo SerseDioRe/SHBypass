@@ -21,7 +21,7 @@ class Offsets
 {
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xE8F7A;
-	uintptr_t adhesiveDllEnc    = 0x1D6A0CA;
+	uintptr_t adhesiveDllEnc    = 0x1D5A002;
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{

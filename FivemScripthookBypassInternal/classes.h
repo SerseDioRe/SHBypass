@@ -20,8 +20,8 @@ static_assert(sizeof(AdhesiveDll) == 0x80);
 class Offsets
 {
 private:
-	uintptr_t gtaCoreFiveDllEnc = 0xE8F7A;
-	uintptr_t adhesiveDllEnc    = 0x1D5A002;
+	uintptr_t gtaCoreFiveDllEnc = 0xE8F9A;
+	uintptr_t adhesiveDllEnc    = 0x1CE30BA;
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{

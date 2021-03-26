@@ -2,6 +2,8 @@
 #include "classes.h"
 #include "memory.h"
 
+#define INTEGRITY_CHECK
+
 #ifdef INTEGRITY_CHECK
 DWORD WINAPI HackThread(HMODULE hModule)
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 
-//#define INTEGRITY_CHECK
+#define INTEGRITY_CHECK
 
 #ifdef INTEGRITY_CHECK
 class GtaCoreFiveDll
@@ -24,7 +24,7 @@ class Offsets
 {
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xE8F9A;
-	uintptr_t adhesiveDllEnc = 0x1D9F5FA;
+	uintptr_t adhesiveDllEnc = 0x1DB6F0A;
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{
@@ -68,7 +68,7 @@ public:
 	};
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xE8F9A;
-	uintptr_t offsetsHook[3]    = { 0xA86FB5, 0x7006C5, 0xA86FD3 };
+	uintptr_t offsetsHook[3]    = { 0x12352E5, 0xC0BC98, 0x1235303 };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{

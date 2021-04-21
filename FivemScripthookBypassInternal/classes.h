@@ -24,7 +24,9 @@ class Offsets
 {
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xEAF8A;
-	uintptr_t adhesiveDllEnc = 0x1F9965E;
+	uintptr_t adhesiveDllEnc    = 0x1F9965E;
+	uintptr_t offsetsHookRd     = 0x8F6D3;
+	BYTE checkUpdate[6] = { 0x88, 0x81, 0x7A, 0x6B, 0xFA, 0xFF };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{
@@ -33,6 +35,10 @@ private:
 	uintptr_t decryptAdhesiveDll() const
 	{
 		return ((((((adhesiveDllEnc - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
+	}
+	uintptr_t decryptAdhesiveHookDll() const
+	{
+		return ((((((offsetsHookRd - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
 	}
 
 public:
@@ -44,6 +50,27 @@ public:
 	uintptr_t getAdhesiveDll() const
 	{
 		return decryptAdhesiveDll();
+	}
+
+	uintptr_t getAdhesiveHookDll() const
+	{
+		return decryptAdhesiveHookDll();
+	}
+
+	bool needUpdate(uintptr_t moduleBaseAdhesive)
+	{
+		for (int count{ 0 }; count < 6; ++count)
+		{
+			if (((BYTE*)(moduleBaseAdhesive + getAdhesiveHookDll()))[count] != checkUpdate[count])
+				return true;
+		}
+
+		return false;
+	}
+
+	void warningUpdate()
+	{
+		MessageBox(0, L"Scripthook bypass need to be updated!", L"ERROR", MB_ICONERROR);
 	}
 };
 

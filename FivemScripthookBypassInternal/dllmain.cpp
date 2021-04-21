@@ -23,13 +23,6 @@ DWORD WINAPI HackThread(HMODULE hModule)
         FreeLibraryAndExitThread(hModule, 0);
     }
 
-    /*if((*(int*)(moduleBaseAdhesive + 0x86581)) != 0x6A7A8188)
-    {
-        MessageBox(0, L"Scripthook bypass need to be updated!", L"ERROR", MB_ICONERROR);
-        FreeLibraryAndExitThread(hModule, 0);
-        TerminateProcess(GetCurrentProcess(), 0);
-    }*/
-
     while (true)
     {
         gtaCoreFiveDll->value = true;

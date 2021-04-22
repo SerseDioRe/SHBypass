@@ -26,7 +26,7 @@ private:
 	uintptr_t gtaCoreFiveDllEnc = 0xEAF8A;
 	uintptr_t adhesiveDllEnc    = 0x1F9965E;
 	uintptr_t offsetsHookRd     = 0x8F6D3;
-	BYTE checkUpdate[6] = { 0x88, 0x81, 0x7A, 0x6B, 0xFA, 0xFF };
+	BYTE checkUpdate[6] = { 0x88, 0x81, 0x7A, 0x6A, 0xFA, 0xFF };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{

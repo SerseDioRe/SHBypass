@@ -24,9 +24,9 @@ class Offsets
 {
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xEAF8A;
-	uintptr_t adhesiveDllEnc    = 0x2243E32;
-	uintptr_t offsetsHookRd     = 0x3FD22B;
-	BYTE checkUpdate[6] = { 0x88, 0x81, 0x45, 0xD6, 0xF5, 0xFF };
+	uintptr_t adhesiveDllEnc    = 0x21D1F0A;
+	uintptr_t offsetsHookRd     = 0x4212FE;
+	BYTE checkUpdate[6] = { 0x88, 0x81, 0x2B, 0x5C, 0xF8, 0xFF };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{
@@ -95,7 +95,7 @@ public:
 	};
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xEAF8A;
-	uintptr_t offsetsHook[3]    = { 0x3FD1FF, 0xD1FBFC, 0x3FD22B };
+	uintptr_t offsetsHook[3]    = { 0x4212D2, 0x1FC6753, 0x4212FE };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{

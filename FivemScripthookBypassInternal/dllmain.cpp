@@ -1,6 +1,7 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "classes.h"
 #include "memory.h"
+#include <iostream>
 
 #define INTEGRITY_CHECK
 

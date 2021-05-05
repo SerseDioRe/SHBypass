@@ -23,10 +23,10 @@ static_assert(sizeof(AdhesiveDll) == 0x80);
 class Offsets
 {
 private:
-	uintptr_t gtaCoreFiveDllEnc = 0xEAF9A;
-	uintptr_t adhesiveDllEnc    = 0x21D3B32;
-	uintptr_t offsetsHookRd     = 0x32369;
-	BYTE checkUpdate[6] = { 0x88, 0x81, 0x8D, 0x4D, 0xFE, 0xFF };
+	uintptr_t gtaCoreFiveDllEnc = 0xEAF8A;
+	uintptr_t adhesiveDllEnc    = 0x22B2AAA;
+	uintptr_t offsetsHookRd     = 0xB4617E;
+	BYTE checkUpdate[6] = { 0x88, 0x81, 0x4B, 0xCF, 0xF9, 0xFF };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{
@@ -95,7 +95,7 @@ public:
 	};
 private:
 	uintptr_t gtaCoreFiveDllEnc = 0xEAF9A;
-	uintptr_t offsetsHook[3]    = { 0x3233D, 0x2E7B1D, 0x32369 };
+	uintptr_t offsetsHook[3]    = { 0xB46152, 0x1F13BA, 0xB4617E };
 private:
 	uintptr_t decryptGtaCoreFiveDll() const
 	{

@@ -23,45 +23,31 @@ static_assert(sizeof(AdhesiveDll) == 0x80);
 class Offsets
 {
 private:
-	uintptr_t gtaCoreFiveDllEnc = 0xEAF8A;
-	uintptr_t adhesiveDllEnc    = 0x22B2AAA;
-	uintptr_t offsetsHookRd     = 0xB4617E;
-	BYTE checkUpdate[6] = { 0x88, 0x81, 0x4B, 0xCF, 0xF9, 0xFF };
-private:
-	uintptr_t decryptGtaCoreFiveDll() const
-	{
-		return ((((((gtaCoreFiveDllEnc - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-	}
-	uintptr_t decryptAdhesiveDll() const
-	{
-		return ((((((adhesiveDllEnc - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-	}
-	uintptr_t decryptAdhesiveHookDll() const
-	{
-		return ((((((offsetsHookRd - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-	}
-
+	uintptr_t m_gtaCoreFiveDllEnc = 0xE1E38;
+	uintptr_t m_adhesiveDllEnc    = 0x244E978;
+	uintptr_t m_offsetsHookRd     = 0x1A9096;
+	BYTE m_checkUpdate[6] = { 0x88, 0x9A, 0x95, 0x12, 0xF1, 0xFF };
 public:
 	uintptr_t getGtaCoreFiveDll() const
 	{
-		return decryptGtaCoreFiveDll();
+		return m_gtaCoreFiveDllEnc;
 	}
 
 	uintptr_t getAdhesiveDll() const
 	{
-		return decryptAdhesiveDll();
+		return m_adhesiveDllEnc;
 	}
 
-	uintptr_t getAdhesiveHookDll() const
+	uintptr_t getAdhesiveHookRdDll() const
 	{
-		return decryptAdhesiveHookDll();
+		return m_offsetsHookRd;
 	}
 
 	bool needUpdate(uintptr_t moduleBaseAdhesive)
 	{
 		for (int count{ 0 }; count < 6; ++count)
 		{
-			if (((BYTE*)(moduleBaseAdhesive + getAdhesiveHookDll()))[count] != checkUpdate[count])
+			if (((BYTE*)(moduleBaseAdhesive + getAdhesiveHookRdDll()))[count] != m_checkUpdate[count])
 				return true;
 		}
 
@@ -94,38 +80,12 @@ public:
 		maxHookNumber,
 	};
 private:
-	uintptr_t gtaCoreFiveDllEnc = 0xEAF9A;
-	uintptr_t offsetsHook[3]    = { 0xB46152, 0x1F13BA, 0xB4617E };
-private:
-	uintptr_t decryptGtaCoreFiveDll() const
-	{
-		return ((((((gtaCoreFiveDllEnc - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-	}
-
-	uintptr_t decryptAdhesiveDll(OffsetsEnum offset) const
-	{
-		switch (offset)
-		{
-		case Offsets::firstHook:
-			return ((((((offsetsHook[Offsets::firstHook] - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-			break;
-		case Offsets::secondHook:
-			return ((((((offsetsHook[Offsets::secondHook] - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-			break;
-		case Offsets::thirdHook:
-			return ((((((offsetsHook[Offsets::thirdHook] - 0x6666) - 0x299) + 0x2297) - 0x3570) + 0x4398) - 0x5912);
-			break;
-		case Offsets::maxHookNumber:
-			break;
-		default:
-			break;
-		}
-	}
-
+	uintptr_t m_gtaCoreFiveDllEnc = 0xE1E38;
+	uintptr_t m_offsetsHook[3]    = { 0x1A9069, 0x226D084, 0x1A9096 };
 public:
 	uintptr_t getGtaCoreFiveDll() const
 	{
-		return decryptGtaCoreFiveDll();
+		return m_gtaCoreFiveDllEnc;
 	}
 
 	uintptr_t getAdhesiveDll(OffsetsEnum offset) const
@@ -133,13 +93,13 @@ public:
 		switch (offset)
 		{
 		case Offsets::firstHook:
-			return decryptAdhesiveDll(OffsetsEnum::firstHook);
+			return m_offsetsHook[OffsetsEnum::firstHook];
 			break;
 		case Offsets::secondHook:
-			return decryptAdhesiveDll(OffsetsEnum::secondHook);
+			return m_offsetsHook[OffsetsEnum::secondHook];
 			break;
 		case Offsets::thirdHook:
-			return decryptAdhesiveDll(OffsetsEnum::thirdHook);
+			return m_offsetsHook[OffsetsEnum::thirdHook];
 			break;
 		case Offsets::maxHookNumber:
 			break;
